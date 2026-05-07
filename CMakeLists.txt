@@ -12,6 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(${CMAKE_PROJECT_NAME} src/1_getting_started/hellowindow.cpp)
+add_executable(${CMAKE_PROJECT_NAME} src/1_getting_started/hello_window.cpp)
 
 target_link_libraries(${CMAKE_PROJECT_NAME} glfw glad)

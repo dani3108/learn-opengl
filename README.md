@@ -1,3 +1,3 @@
 # LearnOpenGL project
 
-www.learnopengl.com
+CMake project for the tutorials over at www.learnopengl.com

@@ -7,6 +7,7 @@
 constexpr int DISPLAY_WIDTH { 800 };
 constexpr int DISPLAY_HEIGHT { 600 };
 
+// This function will be called each time we resize the window
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void processInput(GLFWwindow* window);

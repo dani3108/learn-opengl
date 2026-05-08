@@ -1,10 +1,10 @@
 # =========================================
-# Hello Window
+# 1. Hello Window
 # =========================================
 
 add_executable(
     hello_window
-    1_hello_window/hello_window.cpp
+    lesson_1_hello_window/hello_window.cpp
 )
 
 target_link_libraries(
@@ -15,12 +15,12 @@ target_link_libraries(
 )
 
 # =========================================
-# Hello Triangle
+# 2. Hello Triangle
 # =========================================
 
 add_executable(
     hello_triangle
-    2_hello_triangle/hello_triangle.cpp
+    lesson_2_hello_triangle/hello_triangle.cpp
 )
 
 target_link_libraries(

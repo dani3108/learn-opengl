@@ -27,4 +27,5 @@ add_subdirectory("lib/glfw-3.4")        # Creating windows
 # OpenGL Chapters
 # =========================================
 
-add_subdirectory(src/1_getting_started)
+add_subdirectory(src/chapter_1_getting_started)
+# add_subdirectory(src/chapter_1_getting_started)

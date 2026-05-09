@@ -1,7 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <cstddef>
 #include <iostream>
 
 constexpr int DISPLAY_WIDTH { 800 };
@@ -22,7 +21,7 @@ int main()
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     #endif
 
-    GLFWwindow* window { glfwCreateWindow(DISPLAY_WIDTH, DISPLAY_HEIGHT, "LearnOpenGL", NULL, NULL) };
+    GLFWwindow* window { glfwCreateWindow(DISPLAY_WIDTH, DISPLAY_HEIGHT, "Hello Window", NULL, NULL) };
     if(!window)
     {
         std::cerr << "Failed to create GLFW window\n";

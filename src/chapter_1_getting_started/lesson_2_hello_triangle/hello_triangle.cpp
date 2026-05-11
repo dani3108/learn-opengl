@@ -215,7 +215,7 @@ int main()
         glfwPollEvents();
     }
 
-    // Terminate GLFW library
+    // Terminate GLFW library and free resources
     glfwTerminate();
     return 0;
 }

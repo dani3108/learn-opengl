@@ -7,7 +7,7 @@ constexpr int DISPLAY_WIDTH { 800 };
 constexpr int DISPLAY_HEIGHT { 600 };
 
 // This function will be called each time we resize the window
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow*, int width, int height);
 
 void processInput(GLFWwindow* window);
 
@@ -57,7 +57,7 @@ int main()
     return 0;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void framebuffer_size_callback(GLFWwindow*, int width, int height)
 {
     glViewport(0, 0, width, height);
 }

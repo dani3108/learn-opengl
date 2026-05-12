@@ -1,4 +1,20 @@
 # =========================================
+# Compile flags
+# =========================================
+
+if (MSVC)
+    add_compile_options(/W4 /permissive-)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+
+    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        add_compile_options(-Wconversion -Wconditional-uninitialized)
+    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        add_compile_options(-Wconversion)
+    endif()
+endif()
+
+# =========================================
 # 1. Hello Window
 # =========================================
 

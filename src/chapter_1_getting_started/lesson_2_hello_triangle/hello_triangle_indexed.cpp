@@ -11,10 +11,16 @@ GLint success;
 GLchar infoLog[512];
 
 // Vertex data of a triangle
-constexpr GLfloat vertices[] {
-    -0.5f, -0.5f, 0.0f,
-    +0.5f, -0.5f, 0.0f,
-    +0.0f, +0.5f, 0.0f
+constexpr GLfloat vertices[]{
+     0.5f,  0.5f, 0.0f,  // top right
+     0.5f, -0.5f, 0.0f,  // bottom right
+    -0.5f, -0.5f, 0.0f,  // bottom left
+    -0.5f,  0.5f, 0.0f   // top left
+};
+
+constexpr GLuint indices[] = {  // note that we start from 0!
+    0, 1, 3,   // first triangle
+    1, 2, 3    // second triangle
 };
 
 // Vertex shader
@@ -152,16 +158,21 @@ int main()
     glDeleteShader(fragmentShader);
 
     // ********************************
-    // VERTEX DATA AND ATTRIBUTES SETUP
+    // VERTEX DATA (VBO)
+    // VERTEX ATTRIBUTES (VAO)
+    // VERTEX INDECES (EBO)
     // ********************************
 
-    // Create a Vertex Buffer Object (VBO) and Vertex Attribute Object (VAO)
+    // Create a Vertex Buffer Object (VBO), Vertex Attribute Object (VAO) and Element Buffer Object (EBO)
     // The VBO is a buffer ("array") used to send data to the GPU
     // The VAO stores the info on how to interpret the VBO data
-    // A reference/id to the buffer is stored in a GLuint variable
-    GLuint VAO, VBO;
+    // The EBO stores indeces that OpenGL uses to decide which vertices to draw
+    // The EBO helps us render a square with only 4 vertices instead of 6 (3 vertices per triangle that makes up the square)
+    // A reference/id to each object is stored in a GLuint variable
+    GLuint VAO, VBO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
 
     // 1) Bind our VAO
     // We dont need to specify a target since there are no different VAO types
@@ -172,8 +183,14 @@ int main()
     // We need to bind an object to the target so OpenGL known on which object to operate
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    // 3) Copy our vertex data into the currently bound buffer's memory
+    // 2.5) Copy our vertex data into the currently bound buffer's memory
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // 3) Bind the EBO to the ELEMENT_ARRAY_BUFFER
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+
+    // 3.5) Similar to the VBO, we copy the data into the bound buffer
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // 4) Tell OpenGL how to interpret our vertex data
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -185,7 +202,14 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // Unbind the VAO so future calls cant accidentally modify it
-    glBindVertexArray(0); 
+    glBindVertexArray(0);
+
+    // Draw in wireframe mode
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    // Future drawing calls will still use wireframe
+    // We need to set it back to default
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     // Render loop
     while(!glfwWindowShouldClose(window))
@@ -207,8 +231,10 @@ int main()
         // We only have one so its not necessary to bind it every time
         glBindVertexArray(VAO);
 
-        // Draw a triangle with the VBO vertex data
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        // Draw a triangle with the VBO vertex data (before)
+        // With the EBO, we can draw from the indeces instead
+        // glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // Check and call events and swap buffers
         glfwSwapBuffers(window);

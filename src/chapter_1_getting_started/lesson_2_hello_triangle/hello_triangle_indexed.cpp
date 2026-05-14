@@ -232,8 +232,8 @@ int main()
         glBindVertexArray(VAO);
 
         // Draw a triangle with the VBO vertex data (before)
-        // With the EBO, we can draw from the indeces instead
         // glDrawArrays(GL_TRIANGLES, 0, 3);
+        // With the EBO, we can draw from the indeces instead
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // Check and call events and swap buffers

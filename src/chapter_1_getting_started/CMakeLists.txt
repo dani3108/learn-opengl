@@ -49,3 +49,19 @@ target_link_libraries(
     glad 
     OpenGL::GL
 )
+
+# =========================================
+# 2.1 Hello Triangle Indexed
+# =========================================
+
+add_executable(
+    hello_triangle_indexed
+    lesson_2_hello_triangle/hello_triangle_indexed.cpp
+)
+
+target_link_libraries(
+    hello_triangle_indexed
+    glfw 
+    glad 
+    OpenGL::GL
+)

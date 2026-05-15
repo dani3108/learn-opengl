@@ -17,10 +17,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(CMAKE_VERBOSE_MAKEFILE ON)
 
-# =========================================
 # Helper function
-# =========================================
-
 function(add_demo name src)
     add_executable(${name} ${src})
 

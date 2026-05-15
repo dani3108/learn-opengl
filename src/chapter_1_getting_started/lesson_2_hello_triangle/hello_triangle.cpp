@@ -215,6 +215,11 @@ int main()
         glfwPollEvents();
     }
 
+    // Deallocate the resources we've used (optional)
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteProgram(shaderProgram);
+
     // Terminate GLFW library and free resources
     glfwTerminate();
     return 0;

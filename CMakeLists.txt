@@ -18,6 +18,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(CMAKE_VERBOSE_MAKEFILE ON)
 
 # =========================================
+# Helper function
+# =========================================
+
+function(add_demo name src)
+    add_executable(${name} ${src})
+
+    target_link_libraries(${name}
+        PRIVATE glfw glad OpenGL::GL
+    )
+endfunction()
+
+# =========================================
 # Third party libraries
 # =========================================
 

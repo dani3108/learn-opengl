@@ -65,3 +65,37 @@ target_link_libraries(
     glad 
     OpenGL::GL
 )
+
+# =========================================
+# 2.2 Hello Triangle Exercise 1
+# =========================================
+
+add_executable(
+    hello_triangle_exercise_1
+    lesson_2_hello_triangle/hello_triangle_exercise_1.cpp
+)
+
+target_link_libraries(
+    hello_triangle_exercise_1
+    glfw 
+    glad 
+    OpenGL::GL
+)
+
+# =========================================
+# 2.3 Hello Triangle Exercise 2
+# =========================================
+
+add_executable(
+    hello_triangle_exercise_2
+    lesson_2_hello_triangle/hello_triangle_exercise_2.cpp
+)
+
+target_link_libraries(
+    hello_triangle_exercise_2
+    glfw 
+    glad 
+    OpenGL::GL
+)
+
+

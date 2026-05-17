@@ -21,7 +21,7 @@ int main()
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     #endif
 
-    GLFWwindow* window { glfwCreateWindow(DISPLAY_WIDTH, DISPLAY_HEIGHT, "Hello Window", NULL, NULL) };
+    GLFWwindow* window { glfwCreateWindow(DISPLAY_WIDTH, DISPLAY_HEIGHT, "Learn OpenGL", NULL, NULL) };
     if(!window)
     {
         std::cerr << "Failed to create GLFW window\n";

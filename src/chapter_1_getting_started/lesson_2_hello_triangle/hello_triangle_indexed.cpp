@@ -73,7 +73,7 @@ int main()
     #endif
 
     // Create window object and check for success
-    GLFWwindow* window { glfwCreateWindow(DISPLAY_WIDTH, DISPLAY_HEIGHT, "Hello Triangle", NULL, NULL) };
+    GLFWwindow* window { glfwCreateWindow(DISPLAY_WIDTH, DISPLAY_HEIGHT, "Learn OpenGL", NULL, NULL) };
     if(!window) {
         std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
